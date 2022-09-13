@@ -36,29 +36,30 @@ def init_db_command():
 	"""Create new tables if they don't exist yet."""
 	try:
 		init_db()
-	except sqlite3.OperationalError:
-		print("Database is already initialized.")
+		click.echo('Initialized the database.')
+	except sqlite3.OperationalError as err:
+		print("Error occured while trying to create the database.")
+		print(err)
 
-	click.echo('Initialized the database.')
 
 def init_db():
 	db = get_db()
-	db.executescript(
+	db.execute(
 		'CREATE TABLE test ('
 			'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-			'string TEXT  NOT NULL'
+			'string TEXT NOT NULL)'
 		)
 
 # ====================== Clear the database of all files ======================
 @click.command('clear-db')
 def clear_db_command():
-	"""Drop table "test" in the database"""
+	"""Clear table "test" in the database"""
 
 	drop_table()
-	click.echo('Dropped table "test".')
+	click.echo('Cleared table "test".')
 
 def drop_table():
 	db = get_db()
-	db.executescript(
+	db.execute(
 		'DELETE FROM test'
 	)

@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_cors import CORS
 import os
 
 def create_app(test_config=None):
@@ -29,5 +30,8 @@ def create_app(test_config=None):
 	from . import api
 	app.register_blueprint(api.bp)
 
+	# Enable cross-origin resource sharing
+	#! This allows access from all addresses
+	CORS(app)
 	
 	return app
