@@ -9,16 +9,15 @@ Downloads and saves a document via provided api into a local database to show kn
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Python](https://www.python.org/downloads/) (which comes with [pip](https://pypi.org/project/pip/) package installer) and [SQLite](https://www.sqlite.org/download.html) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com), [Nodejs](https://nodejs.org/en/) (which comes with [npm](https://docs.npmjs.com) packet manager), [Python](https://www.python.org/downloads/) (which comes with [pip](https://pypi.org/project/pip/) package installer) and [SQLite](https://www.sqlite.org/download.html) installed on your computer.<br/>From your command line:
 
 ```bash
-# Install flask
-$ pip install -U Flask
-
-# Install flask_cors to access the backend from vue
+# Install prerequisites
+$ pip install flask
 $ pip install flask_cors
+$ pip install python-dotenv
 
-# Clone this repository
+# Clone this repository into an empty directory
 $ git clone https://github.com/JKrivec/algoritmik-technical-interview
 
 # Go into the repository
@@ -35,20 +34,38 @@ $ cd backend
 $ flask --app flaskr init-db
 
 # Run the backend
-$ flask --app flaskr --debug run
+$ flask --app flaskr run
+
+# If you wish to clear the database
+$
+
 ```
 
 ### Running the frontend
 
 ```bash
-# Navigate to the frontend directory
-$ cd frontend
+# Open a new terminal and navigate to the frontend directory
+$ cd ../frontend
 
 # Install the prerequisites with npm
 $ npm install
 
-# Run the frontend
+# Run the frontend (develop)
 $ npm run serve
+
+# OR you can build the production files
+$ npm run build
+
+# You will need a http server to serve the files (ex. serve)
+$ npm install -g serve
+
+# Serve the files with serve
+$ serve -s build
+
 ```
 
-pip install python-dotenv
+## Final words
+
+Including .env files into git is a crime, but I did it anyway for the sake of simplicity.
+
+There is also a lot left to be implemented for smoother experience but perhaps for some other day.
