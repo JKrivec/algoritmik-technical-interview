@@ -19,7 +19,7 @@ async function get_all_document_type_names() {
             if (err?.response?.data?.msg) {
                 return new Response(false, err.response.data.msg, null);
             }
-            return new Response(false, "There was an error while getting documents from database.", null);
+            return new Response(false, "There was an error while getting document names from database.", null);
         });
 }
 // =============/ Working with document types =============
@@ -82,6 +82,7 @@ async function extract_data_from_document(file, file_name, document_type_name) {
             console.log("Error in api.js -> ", err);
             // Check if we have a defined response from our backend
             if (err?.response?.data?.msg) {
+                console.log("Problem with typless api ->", err.response.data.data);
                 return new Response(false, err.response.data.msg, null);
             }
             return new Response(false, "There was an error while processing your document.<br />Please check the console", null);

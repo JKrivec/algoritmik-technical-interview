@@ -63,7 +63,7 @@ def init_db():
 	)
 	db.execute(
 		'INSERT INTO document_type_names (document_type_name)'
-		'VALUES (\'random_type\')'
+		'VALUES (\'incorrect_type\')'
 	)
 	db.commit()
 
@@ -73,11 +73,20 @@ def clear_db_command():
 	"""Clear table "documents" in the database"""
 
 	clear_documents_table()
+	clear_document_names_table()
+	
 	click.echo('Cleared table "documents".')
 
 def clear_documents_table():
 	db = get_db()
 	db.execute(
 		'DELETE FROM documents'
+	)
+	db.commit()
+
+def clear_document_names_table():
+	db = get_db()
+	db.execute(
+		'DELETE FROM document_type_names'
 	)
 	db.commit()

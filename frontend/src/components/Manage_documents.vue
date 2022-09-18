@@ -6,10 +6,11 @@
             <input type="file" @change="on_file_selected" />
         </div>
         <div class="document-types mb-3">
-            <div class="mb-1">Select correct tylpess document type name</div>
+            <div class="mb-1">Select correct typless document type name</div>
             <div v-if="existing_document_types">
                 <div @click="selected_document_type = document_type.document_type_name" class="document-type clickable" :class="{ 'document-type-unselected': document_type.document_type_name !== selected_document_type }" v-for="document_type in existing_document_types" v-bind:key="document_type.id">{{ document_type.document_type_name }}</div>
             </div>
+            <p v-else>Currently no document type names to show.</p>
         </div>
         <div class="mb-3">
             <div class="btn btn-outline-primary w-100 process-btn" style="position: relative" @click="process_file">
@@ -223,6 +224,11 @@ h2 {
 }
 
 .document-types div > div:not(:first-child) {
+    margin-left: 10px;
+}
+
+.document-types > p {
+    font-size: small;
     margin-left: 10px;
 }
 

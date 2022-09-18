@@ -33,6 +33,7 @@ bp = Blueprint('api', __name__)
 def index():
 	return "Hello world :)"
 
+# ====================== Document endpoints ======================
 @bp.route("/process", methods = ['POST'])
 def procecess_document():
 	""" Process the incoming base64 string with the help of typless api.
@@ -155,10 +156,12 @@ def save_document():
 		resp.msg = 'Document was succesfuly saved into the database.'
 		resp.data = dict(rows[0])
 	else:
-		resp.msg = 'Error occured while getting documents from database'
+		resp.msg = 'Error occured while saving document into database.'
 
 	return resp.serialize(), 201
+# ======================/ Document endpoints ======================
 
+# ====================== Document type names endpoints ======================
 @bp.route("/document_type_names", methods = ["GET"])
 def get_types():
 	""" Return all document type names used for selecting the correct model for typless api.
@@ -181,3 +184,4 @@ def get_types():
 		resp.msg = 'Error occured while getting document type names from database'
 
 	return resp.serialize(), 200
+# ======================/ Document type names endpoints ======================
