@@ -307,7 +307,7 @@ h2 {
 .response-json {
     margin: 10px 10px;
     padding: 20px 20px;
-    max-height: 450px;
+    max-height: 70%;
     overflow: auto;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 5px;
