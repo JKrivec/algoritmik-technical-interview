@@ -37,7 +37,7 @@ $ flask --app flaskr init-db
 $ flask --app flaskr run
 
 # If you wish to clear the database
-$
+$ flask --app flaskr clear-db
 
 ```
 
@@ -63,12 +63,12 @@ $ npm install -g serve
 $ serve -s build
 
 ```
+### Setting the environment variables
+If Perhaps the ip address of the backend server is different on your machine, you can change the ip in .env file in the frontend.
+Including .env files into git is a crime (and even more so uploading api keys), but I did it anyway for the sake of simplicity.
 
+### User interface
 ![image](https://user-images.githubusercontent.com/32847450/190931344-53bce24b-0977-46e9-84bf-4bb5aee91c90.png)
 
-
 ## Final words
-
-Including .env files into git is a crime, but I did it anyway for the sake of simplicity.
-
-There is also a lot left to be implemented for smoother experience but perhaps for some other day.
+There is a lot left to be implemented for smoother experience but perhaps for some other day.
