@@ -37,3 +37,18 @@ $ flask --app flaskr init-db
 # Run the backend
 $ flask --app flaskr --debug run
 ```
+
+### Running the frontend
+
+```bash
+# Navigate to the frontend directory
+$ cd frontend
+
+# Install the prerequisites with npm
+$ npm install
+
+# Run the frontend
+$ npm run serve
+```
+
+pip install python-dotenv

@@ -45,21 +45,24 @@ def init_db_command():
 def init_db():
 	db = get_db()
 	db.execute(
-		'CREATE TABLE test ('
+		'CREATE TABLE documents ('
 			'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-			'string TEXT NOT NULL)'
+			'file_name TEXT NOT NULL,'
+			'document_type_name TEXT NOT NULL,'
+			'json_string TEXT NOT NULL,'
+			'timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)'
 		)
 
 # ====================== Clear the database of all files ======================
 @click.command('clear-db')
 def clear_db_command():
-	"""Clear table "test" in the database"""
+	"""Clear table "documents" in the database"""
 
 	drop_table()
-	click.echo('Cleared table "test".')
+	click.echo('Cleared table "documents".')
 
 def drop_table():
 	db = get_db()
 	db.execute(
-		'DELETE FROM test'
+		'DELETE FROM documents'
 	)
