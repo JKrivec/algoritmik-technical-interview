@@ -64,6 +64,9 @@ $ serve -s build
 
 ```
 
+![image](https://user-images.githubusercontent.com/32847450/190931344-53bce24b-0977-46e9-84bf-4bb5aee91c90.png)
+
+
 ## Final words
 
 Including .env files into git is a crime, but I did it anyway for the sake of simplicity.
