@@ -94,6 +94,8 @@ def procecess_document():
 
 @bp.route("/documents", methods = ['GET'])
 def get_all_documents():
+	""" Return all saved documents from the database.
+	"""	
 	# Get all posts from database
 	db = get_db()
 	rows = db.execute(
@@ -114,6 +116,8 @@ def get_all_documents():
 
 @bp.route("/documents", methods = ["POST"])
 def save_document():
+	""" Save the document from request into database.
+	"""	
 	# Create default response object
 	resp = Response()
 
@@ -148,8 +152,32 @@ def save_document():
 	
 	if rows is not None:
 		resp.successful = True
+		resp.msg = 'Document was succesfuly saved into the database.'
 		resp.data = dict(rows[0])
 	else:
 		resp.msg = 'Error occured while getting documents from database'
 
 	return resp.serialize(), 201
+
+@bp.route("/document_type_names", methods = ["GET"])
+def get_types():
+	""" Return all document type names used for selecting the correct model for typless api.
+	"""	
+
+	# Get all posts from database
+	db = get_db()
+	rows = db.execute(
+		'SELECT *'
+		'FROM document_type_names'
+	).fetchall()
+
+	# Create default response object
+	resp = Response()
+
+	if rows is not None:
+		resp.successful = True
+		resp.data = [dict(row) for row in rows]
+	else:
+		resp.msg = 'Error occured while getting document type names from database'
+
+	return resp.serialize(), 200

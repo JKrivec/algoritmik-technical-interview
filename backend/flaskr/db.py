@@ -50,19 +50,34 @@ def init_db():
 			'file_name TEXT NOT NULL,'
 			'document_type_name TEXT NOT NULL,'
 			'json_string TEXT NOT NULL,'
-			'timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)'
+			'timestamp DATETIME DEFAULT (cast(strftime(\'%s\', \'now\') as int)))'
 		)
+	db.execute(
+		'CREATE TABLE document_type_names ('
+			'id INTEGER PRIMARY KEY AUTOINCREMENT,'
+			'document_type_name TEXT NOT NULL)'
+		)
+	db.execute(
+		'INSERT INTO document_type_names (document_type_name)'
+		'VALUES (\'api_test\')'
+	)
+	db.execute(
+		'INSERT INTO document_type_names (document_type_name)'
+		'VALUES (\'random_type\')'
+	)
+	db.commit()
 
 # ====================== Clear the database of all files ======================
 @click.command('clear-db')
 def clear_db_command():
 	"""Clear table "documents" in the database"""
 
-	drop_table()
+	clear_documents_table()
 	click.echo('Cleared table "documents".')
 
-def drop_table():
+def clear_documents_table():
 	db = get_db()
 	db.execute(
 		'DELETE FROM documents'
 	)
+	db.commit()
