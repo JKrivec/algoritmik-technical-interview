@@ -63,12 +63,20 @@ $ npm install -g serve
 $ serve -s build
 
 ```
+
 ### Setting the environment variables
+
 If Perhaps the ip address of the backend server is different on your machine, you can change the ip in .env file in the frontend.
 Including .env files into git is a crime (and even more so uploading api keys), but I did it anyway for the sake of simplicity.
 
 ### User interface
+
 ![image](https://user-images.githubusercontent.com/32847450/190931344-53bce24b-0977-46e9-84bf-4bb5aee91c90.png)
 
-## Final words
+### Usage
+
+To read the data from documents, a model first has to be trained (You can do so by visiting [typless](https://app.typless.com/) and creating your own document type). For sake of simplicity, I have already trained a model with the name "api_test". You can test test the usage by selecting the "amazing_company_1.pdf" invoice provided in the main folder of the repository, selecting "api_test" document type name and clicking "process"
+
+# Final words
+
 There is a lot left to be implemented for smoother experience but perhaps for some other day.
